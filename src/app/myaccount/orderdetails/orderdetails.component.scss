@@ -1,0 +1,112 @@
+.cart-box{
+    background-color: #fff;
+    border-radius: 2px;
+    border: rgba(0,0,0,.12) 1px solid;
+    .cart-title{
+        border-bottom: rgba(0,0,0,.12) 1px solid;
+        padding: 16px;
+        text-transform: uppercase;
+        color: #212121;
+        font-size: 16px;
+        font-weight: 500;
+        position: relative;
+        button{
+            line-height: 23px !important;
+            position: absolute;
+            top: 12px;
+            right: 10px;
+        }
+    }
+    .cart-item-list{
+        ul{
+            margin:0;
+            list-style-type: none;
+            padding: 0;
+            li{
+                border-top: rgba(0,0,0,.12) 1px solid;
+                padding: 16px;
+                position: relative;
+                &:first-child {
+                    border-top: 0;
+                }
+                .ItemRow{
+                    overflow: hidden;
+                    .Img{
+                        width: 66px;
+                        float: left;
+                        img{
+                            width: 100%;
+                            float: left;
+                        }
+                    }
+                    .product-details{
+                        float: left;
+                        margin:0 16px;
+                        overflow: hidden;
+                        .product_name{
+                            display: block;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            font-size: 18px;
+                            color: rgba(0,0,0,.87);
+                            line-height: 20px;
+                            display: block;
+                            span{
+                                font-size: 10px;
+                                background-color: #ff8a00;
+                                color: #fff;
+                                padding: 0 5px;
+                                border-radius: 4px;
+                                line-height: 16px;
+                                display: inline-block;
+                                vertical-align: top;
+                            }
+                        }
+                        .date-option{
+                            margin-top: 10px;
+                            font-size: 12px;
+                            color: rgba(0,0,0,.67);
+                            font-weight: 500;
+                        }
+                        .item-btn{
+                            margin-top: 16px;
+                            button{
+                                line-height: 27px;
+                                font-size: 13px !important;
+                                padding: 0px 16px !important;
+                                font-weight: normal;
+                            }
+                        }
+                    }
+                    .product-pricing{
+                        float: right;
+                        text-align: right;
+                        overflow: hidden;
+                        .price{
+                            color: rgba(0,0,0,.67);
+                            font-size: 18px;
+                            font-weight: 500;
+                            em{
+                                font-style: normal;
+                                color: #027CA5;
+                            }
+                        }
+                        .serviceCharge{
+                            margin: 5px 0 10px 0;
+                            color: rgba(0, 0, 0, 0.67);
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.EmptyCart{
+    color:#f00;
+    padding: 20px;
+    text-align: center;
+    cursor: default;
+}

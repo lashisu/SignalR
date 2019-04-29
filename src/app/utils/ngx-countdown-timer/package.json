@@ -1,0 +1,56 @@
+{
+  "_from": "ngx-countdown-timer",
+  "_id": "ngx-countdown-timer@0.1.9",
+  "_inBundle": false,
+  "_integrity": "sha512-vdYV6ni8DCmz9UtVbMrBVVAuffZYTioqIXVJBgXnS5xyCA5/TbNN74Mfxw3chrQlYLlpmQeuw9v93lzNrKv4Pw==",
+  "_location": "/ngx-countdown-timer",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "ngx-countdown-timer",
+    "name": "ngx-countdown-timer",
+    "escapedName": "ngx-countdown-timer",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/ngx-countdown-timer/-/ngx-countdown-timer-0.1.9.tgz",
+  "_shasum": "f7de864b3e30e333ae2a2c093c8d0667f2e604dc",
+  "_spec": "ngx-countdown-timer",
+  "_where": "D:\\PlayLab\\Application\\chilindoweb\\ChilindoAngular\\ClientApp",
+  "author": {
+    "name": "MJP",
+    "email": "markangelpenaranda@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/markpenaranda/ngx-countdown-timer/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "## Installation",
+  "homepage": "https://github.com/markpenaranda/ngx-countdown-timer#readme",
+  "jsnext:main": "ngx-countdown-timer.js",
+  "keywords": [
+    "angular"
+  ],
+  "license": "MIT",
+  "main": "ngx-countdown-timer.umd.js",
+  "module": "ngx-countdown-timer.js",
+  "name": "ngx-countdown-timer",
+  "peerDependencies": {
+    "@angular/core": "^4.0.0",
+    "rxjs": "^5.1.0",
+    "zone.js": "^0.8.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/markpenaranda/ngx-countdown-timer.git"
+  },
+  "typings": "ngx-countdown-timer.d.ts",
+  "version": "0.1.9"
+}

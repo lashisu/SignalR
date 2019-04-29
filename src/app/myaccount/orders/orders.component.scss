@@ -1,0 +1,116 @@
+.cart-box{
+    background-color: #fff;
+    border-radius: 2px;
+    border: rgba(0,0,0,.12) 1px solid;
+    .cart-title{
+        border-bottom: rgba(0,0,0,.12) 1px solid;
+        padding: 16px;
+        text-transform: uppercase;
+        color: #212121;
+        font-size: 16px;
+        font-weight: 500;
+    }
+    .cart-item-list{
+        ul{
+            margin:0;
+            list-style-type: none;
+            padding: 0;
+            li{
+                border-top: rgba(0,0,0,.12) 1px solid;
+                padding: 8px;
+                position: relative;
+                &:first-child {
+                    border-top: 0;
+                }
+                .ItemRow{
+                    overflow: hidden;
+                    margin-bottom: 16px;
+                    line-height: 14px;
+                    .ItemCols{
+                        span{
+                            display: inline-block;
+                        }
+                        .OrderId{
+                            color: rgba(0, 0, 0, 0.87);
+                            display: block;
+                            a{
+                                font-size: 14px;
+                                color: #1ab7ea;
+                                display: inline-block;
+                            }
+                        }
+                        .PaymentType{
+                            font-size: 13px;
+                            color: rgba(0, 0, 0, 0.67);
+                            font-weight: 500;
+                            margin-right: 16px;
+                            @media screen and (max-width: 480px){
+                                display: block;
+                            }
+                        }
+                        em{
+                            text-decoration: underline;
+                            font-style: normal;
+                            display: inline-block;
+                        }
+                        .txt{
+                            font-size: 13px;
+                            @media screen and (max-width: 480px){
+                                display: block;
+                            }
+                            &.PaymentPending{
+                                color:orange;
+                            }
+                            &.Cancelled{
+                                color:red;
+                            }
+                            &.Transferred{
+                                color:green;
+                            }
+                        }
+                        .msg{
+                            font-size: 13px;
+                            color: rgba(0, 0, 0, 0.67);
+                            font-weight: 500;
+                        }
+                        .price{
+                            font-size: 14px;
+                            color: #027CA5;
+                        }
+                        &:nth-child(1){
+                            float: left;
+                            width: calc(100% - 130px);
+                        }
+                        &:nth-child(2){
+                            float: right;
+                            width: 130px;
+                            text-align: right;
+                        }
+                    }
+                }
+                .ItemAction{
+                    button{
+                        line-height: 23px !important;
+                        margin-right: 8px;
+                    }
+                    button:last-child{
+                        margin-right: 0px;
+                    }
+                }
+                &:nth-child(odd){
+                    background-color: rgba(0,0,0,0.025);
+                }
+                &:nth-child(even){
+                    background-color:#fff;
+                }
+            }
+        }
+    }
+}
+
+.NoOrderList{
+    color:#f00;
+    padding: 20px;
+    text-align: center;
+    cursor: default;
+}

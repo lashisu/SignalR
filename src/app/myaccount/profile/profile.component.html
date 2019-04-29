@@ -1,0 +1,224 @@
+<div class="Welcome" *ngIf="UserInfo">
+  <h2>
+    {{ '80.localizedText' | translate }}
+    <span *ngIf="UserInfo?.firstName != ''">{{UserInfo?.firstName + ' ' + UserInfo?.lastName}}</span>
+    <span *ngIf="UserInfo?.firstName == ''">{{UserInfo?.userName}}</span>
+  </h2>
+  <h4>Total Credit<span>{{CreditInfo?.totalCredit}}<em>{{CreditInfo?.currency}}</em></span></h4>
+</div>
+<mat-tab-group class="MultiTab" mat-stretch-tabs>
+  <mat-tab label="{{ '2274.localizedText' | translate }}">
+    <div class="TabHead" [innerHtml]="'2278.localizedText' | translate"></div>
+    <form [formGroup]="PersonalForm" autocomplete="off" (ngSubmit)="UpdatePersonalInfo(PersonalForm)">
+      <div class="FormFields">
+        <mat-form-field appearance="outline">
+          <mat-label>{{ '2761.localizedText' | translate }}</mat-label>
+          <input matInput formControlName="firstName" required>
+          <app-errors [control]="PersonalForm.get('firstName')" require="{{ '2589.localizedText' | translate }}">
+          </app-errors>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>{{ '2762.localizedText' | translate }}</mat-label>
+          <input matInput formControlName="lastName" required>
+          <app-errors [control]="PersonalForm.get('lastName')" require="{{ '2589.localizedText' | translate }}">
+          </app-errors>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>{{ '1541.localizedText' | translate }}</mat-label>
+          <input matInput formControlName="userName" minlength="6" maxlength="32" required>
+          <app-errors [control]="PersonalForm.get('userName')" require="{{ '1485.localizedText' | translate }}"
+            minLength="{{ '226.localizedText' | translate }}">
+          </app-errors>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>{{ '372.localizedText' | translate }}</mat-label>
+          <input matInput formControlName="email">
+          <app-errors [control]="PersonalForm.get('email')" email="{{ '1876.localizedText' | translate }}"
+            require="{{ '1875.localizedText' | translate }}">
+          </app-errors>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>{{ '2266.localizedText' | translate }}</mat-label>
+          <input matInput class="fake" readonly formControlName="fake">
+          <mat-radio-group formControlName="gender" required>
+            <mat-radio-button value="male" color="primary">{{ '2344.localizedText' | translate }}</mat-radio-button>
+            <mat-radio-button value="female" color="primary">{{ '2345.localizedText' | translate }}
+            </mat-radio-button>
+          </mat-radio-group>
+          <app-errors [control]="PersonalForm.get('gender')" require="{{ '2589.localizedText' | translate }}">
+          </app-errors>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>{{ '2297.localizedText' | translate }}</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="dateOfBirth">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <app-errors [control]="PersonalForm.get('dateOfBirth')" require="{{ '2589.localizedText' | translate }}">
+          </app-errors>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>{{ '172.localizedText' | translate }}</mat-label>
+          <input matInput formControlName="phone" onkeypress="return isNumber(event)" maxlength="10">
+          <app-errors [control]="PersonalForm.get('phone')" pattern="{{ '1516.localizedText' | translate }}"
+            require="{{ '2589.localizedText' | translate }}"></app-errors>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>{{ '568.localizedText' | translate }}</mat-label>
+          <input matInput formControlName="lineId">
+          <app-errors [control]="PersonalForm.get('lineId')" require="{{ '2589.localizedText' | translate }}">
+          </app-errors>
+        </mat-form-field>
+      </div>
+      <div class="ActionBox">
+        <!-- <button mat-raised-button>Reset</button> -->
+        <button mat-raised-button color="primary"
+          [disabled]="PersonalForm.invalid">{{ '1541.localizedText' | translate }}</button>
+      </div>
+    </form>
+  </mat-tab>
+  <mat-tab label="{{ '2275.localizedText' | translate }}">
+    <div class="TabHead" [innerHtml]="'2279.localizedText' | translate"></div>
+    <div class="FormFields">
+      <button mat-stroked-button *ngIf="!ShowAddressControl" (click)="AddEdit(0)"><i class="fas fa-plus"></i>
+        {{ '2065.localizedText' | translate }}</button>
+      <div class="MyForm" *ngIf="ShowAddressControl">
+        <form [formGroup]="AddressForm" autocomplete="off" autocomplete="off" (ngSubmit)="SaveAddress(AddressForm)">
+          <ng-container *ngFor="let elm of AddressControl">
+            <mat-form-field appearance="outline" *ngIf="elm.fieldType=='TextBox' && elm.fieldIdentity!='domain'">
+              <mat-label>{{elm.fieldDisplayName}}</mat-label>
+              <input matInput *ngIf="elm.fieldIdentity!='phone'" [readonly]="elm.isReadOnly" [required]="elm.isRequired"
+                [formControlName]="elm.fieldIdentity">
+              <app-errors *ngIf="elm.fieldIdentity!='phone'" [control]="AddressForm.get(elm.fieldIdentity)"
+                require="{{ '2589.localizedText' | translate }}"></app-errors>
+              <input matInput *ngIf="elm.fieldIdentity=='phone'" [readonly]="elm.isReadOnly" [required]="elm.isRequired"
+                [formControlName]="elm.fieldIdentity" onkeypress="return isNumber(event)">
+              <app-errors *ngIf="elm.fieldIdentity=='phone'" [control]="AddressForm.get(elm.fieldIdentity)"
+                [pattern]="PhonePatternMsg" require="{{ '2589.localizedText' | translate }}"></app-errors>
+            </mat-form-field>
+            <mat-form-field appearance="outline" *ngIf="elm.fieldType=='TextBox' && elm.fieldIdentity=='domain'">
+              <mat-label>{{elm.fieldDisplayName}}</mat-label>
+              <mat-select [required]="elm.isRequired" [formControlName]="elm.fieldIdentity"
+                *ngIf="elm.fieldIdentity=='domain'">
+                <mat-option *ngFor="let Country of Countries"
+                  [disabled]="AddressForm.get(elm.fieldIdentity).value != Country.domainCode"
+                  [value]="Country.domainCode">
+                  {{Country.countryName}}
+                </mat-option>
+              </mat-select>
+              <app-errors [control]="AddressForm.get(elm.fieldIdentity)"
+                require="{{ '2589.localizedText' | translate }}"></app-errors>
+            </mat-form-field>
+            <mat-form-field appearance="outline" *ngIf="elm.fieldType=='DropDown'">
+              <mat-label>{{elm.fieldDisplayName}} - {{elm.fieldValue}}</mat-label>
+              <mat-select [required]="elm.isRequired" [formControlName]="elm.fieldIdentity"
+                *ngIf="elm.fieldIdentity=='postcode'" (selectionChange)="ChangePostcode()">
+                <mat-option value="">{{ '582.localizedText' | translate }} {{elm.fieldDisplayName}}</mat-option>
+                <mat-option *ngFor="let opt of PostalCode" [value]="opt.value">{{opt.value}}</mat-option>
+              </mat-select>
+              <mat-select [required]="elm.isRequired" [formControlName]="elm.fieldIdentity"
+                *ngIf="elm.fieldIdentity=='province'" (selectionChange)="ChangeProvince()">
+                <mat-option value="">{{ '582.localizedText' | translate }} {{elm.fieldDisplayName}}</mat-option>
+                <mat-option *ngFor="let opt of Province" [value]="opt.value">{{opt.value}}</mat-option>
+              </mat-select>
+              <mat-select [required]="elm.isRequired" [formControlName]="elm.fieldIdentity"
+                *ngIf="elm.fieldIdentity=='district'" (selectionChange)="ChangeDistrict()">
+                <mat-option value="">{{ '582.localizedText' | translate }} {{elm.fieldDisplayName}}</mat-option>
+                <mat-option *ngFor="let opt of District" [value]="opt.value">{{opt.value}}</mat-option>
+              </mat-select>
+              <mat-select [required]="elm.isRequired" [formControlName]="elm.fieldIdentity"
+                *ngIf="elm.fieldIdentity=='districtsub'">
+                <mat-option value="">{{ '582.localizedText' | translate }} {{elm.fieldDisplayName}}</mat-option>
+                <mat-option *ngFor="let opt of SubDistrict" [value]="opt.value">{{opt.value}}</mat-option>
+              </mat-select>
+              <app-errors [control]="AddressForm.get(elm.fieldIdentity)"
+                require="{{ '2589.localizedText' | translate }}"></app-errors>
+            </mat-form-field>
+            <div class="MyCheckbox" *ngIf="elm.fieldType=='CheckBox'">
+              <mat-checkbox [required]="elm.isRequired" [formControlName]="elm.fieldIdentity">
+                {{elm.fieldDisplayName}}</mat-checkbox>
+            </div>
+          </ng-container>
+          <div class="ActionBox">
+            <button mat-raised-button type="button"
+              (click)="AddressControl=[];ShowAddressControl = !ShowAddressControl">{{ '1488.localizedText' | translate }}</button>
+            <button mat-raised-button [disabled]="AddressForm.invalid"
+              color="primary">{{ '1541.localizedText' | translate }}</button>
+          </div>
+        </form>
+      </div>
+      <ul class="AddressList">
+        <li *ngFor="let address of AddressList">
+          <div class="action">
+            <button mat-button *ngIf="!address.isdefault" color="primary"
+              (click)="SetAsDefault(address.accountId, address.addressId)">{{ '2359.localizedText' | translate }}</button>
+            <button mat-button color="accent"
+              (click)="AddEdit(address.addressId)">{{ '2070.localizedText' | translate }}</button>
+            <button mat-button color="warn"
+              (click)="DeleteAddress(address.addressId)">{{ '2347.localizedText' | translate }}</button>
+          </div>
+          <div class="detail">
+            <div class="name">{{address.firstname +' '+ address.lastname}}</div>
+            <div class="address">
+              {{address.address +', '+ address.districtsub +', '+ address.district +', '+ address.province +', '+ address.postcode}}
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </mat-tab>
+  <mat-tab label="{{ '2315.localizedText' | translate }}">
+    <div class="TabHead" [innerHtml]="'2313.localizedText' | translate"></div>
+    <form [formGroup]="CountryForm" autocomplete="off" (ngSubmit)="UpdateCountry(CountryForm)">
+      <div class="FormFields">
+        <mat-form-field appearance="outline">
+          <mat-label>{{ '802.localizedText' | translate }}</mat-label>
+          <mat-select formControlName="country">
+            <mat-optgroup label="Suggested Countries">
+              <mat-option *ngFor="let Country of CountryListSuggested" [value]="Country.domainCode">
+                {{Country.countryName}}
+              </mat-option>
+            </mat-optgroup>
+            <mat-optgroup label="Other Countries">
+              <mat-option *ngFor="let Country of CountryListAll" [value]="Country.domainCode">
+                {{Country.countryName}}
+              </mat-option>
+            </mat-optgroup>
+          </mat-select>
+          <app-errors [control]="CountryForm.get('country')" require="{{ '1018.localizedText' | translate }}">
+          </app-errors>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>{{ '374.localizedText' | translate }}</mat-label>
+          <mat-select formControlName="deviceLanguage">
+            <mat-option *ngFor="let Language of Languages" [value]="Language.languageCode">
+              {{Language.language}}
+            </mat-option>
+          </mat-select>
+          <app-errors [control]="CountryForm.get('deviceLanguage')" require="{{ '2589.localizedText' | translate }}">
+          </app-errors>
+        </mat-form-field>
+      </div>
+      <div class="ActionBox">
+        <button mat-raised-button color="primary"
+          [disabled]="CountryForm.invalid">{{ '1541.localizedText' | translate }}</button>
+      </div>
+    </form>
+  </mat-tab>
+  <mat-tab label="{{ '2276.localizedText' | translate }}">
+    <div class="TabHead" [innerHtml]="'2289.localizedText' | translate"></div>
+    <div class="CreditInfo">
+      <div class="cBox active">
+        <div class="creditType">{{ '2268.localizedText' | translate }}</div>
+        <div class="creditAmount">{{CreditInfo?.totalCredit}}<span>{{CreditInfo?.currency}}</span></div>
+      </div>
+      <div class="cBox">
+        <div class="creditType">{{ '2271.localizedText' | translate }}</div>
+        <div class="creditAmount">{{CreditInfo?.refundableCredit}}<span>{{CreditInfo?.currency}}</span></div>
+      </div>
+      <div class="cBox">
+        <div class="creditType">{{ '2272.localizedText' | translate }}</div>
+        <div class="creditAmount">{{CreditInfo?.nonRefundableCredit}}<span>{{CreditInfo?.currency}}</span></div>
+      </div>
+    </div>
+  </mat-tab>
+</mat-tab-group>

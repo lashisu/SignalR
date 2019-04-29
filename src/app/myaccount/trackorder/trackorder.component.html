@@ -1,0 +1,53 @@
+<div class="cart-box">
+    <div class="cart-title">
+      Order Details
+      <div class="cart-price-head">Price / <em>Subtotal</em></div>
+    </div>
+    <div class="cart-item-list">
+      <ul>
+        <li *ngIf="NoDetails" class="NoDetails">Details not found!</li>
+        <!-- <ng-container *ngFor="let item of cart?.Tra">
+          <li *ngIf="item.isItem">
+            <div class="ItemRow">
+              <div class="Img">
+                <img [src]="item.imageSource+item.imageURL" />
+              </div>
+              <div class="product-details">
+                <div class="product_name"><a>{{item.itemTitle}}</a></div>
+                <div class="date-option">Delivered On {{item.relatedItemsList[0].deliveryDate_String | date:'EEE, MMM d'}}
+                </div>
+                <div class="item-attributes">
+                  <span class="QuantitySize" *ngIf="item.quantityToShow!='1'">
+                    <button mat-icon-button color="warn" [disabled]="item.quantitySelected=='1'"
+                      (click)="ChangeSize('reduce', itemIndex)">-</button>
+                    <span>
+                      <mat-select [(value)]="item.quantitySelected" panelClass="QuatityOpt">
+                        <mat-option *ngFor="let list of MatOption(item.quantityToShow); let i = index;" [value]="i+1">
+                          {{i+1}}
+                        </mat-option>
+                      </mat-select>
+                    </span>
+                    <button mat-icon-button color="primary" [disabled]="item.quantitySelected==item.quantityToShow"
+                      (click)="ChangeSize('increase', itemIndex)">+</button>
+                  </span>
+                  <span class="QuantitySize" *ngIf="item.quantityToShow=='1'">
+                    <span class="Size">Qty: {{item.quantitySelected}}</span>
+                  </span>
+                  <span class="QuantitySize">
+                    <span class="Size">{{item.relatedItemsList[0].subItemType}}</span>
+                  </span>
+                </div>
+              </div>
+              <div class="product-pricing">
+                <div class="price">{{item.price | number : '1.2'}} /
+                  <em>{{item.priceWithServiceCharge | number : '1.2'}}</em></div>
+                <div class="serviceCharge">10% service charge</div>
+                <div class="delete" *ngIf="item.isDeletable"><button type="button" mat-icon-button color="warn"><i
+                      class="far fa-trash-alt"></i></button></div>
+              </div>
+            </div>
+          </li>
+        </ng-container> -->
+      </ul>
+    </div>
+  </div>

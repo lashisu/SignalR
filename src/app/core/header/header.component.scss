@@ -1,0 +1,88 @@
+.MainNav{
+    a{
+        color: #fff;
+        font-size: 15px !important;
+        letter-spacing: 0.1px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        text-decoration: none;
+        display: inline-block;
+        line-height: 64px;
+        font-weight: 400;
+        padding: 0 10px !important;
+        min-width: auto !important;
+        position: relative;
+        border-radius: 0 !important;
+        @media (max-width: 600px){
+            line-height: 56px;
+        }
+        i + span{
+            margin-left: 5px;
+        }
+        .txt_icon{
+            display: none;
+            @media (max-width: 767px){
+                display: inline-block;
+            }
+        }
+        span{
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 24px;
+            &.txt{
+                @media (max-width: 767px){
+                    display: none;
+                }
+            }
+            &.txt_u{
+                display: none;
+                @media (min-width: 767px){
+                    display: inline-block;
+                }
+            }
+            img{
+                width: 28px;
+                margin-top: 8px;
+            }
+        }
+        em{
+            text-align: center;
+            border-radius: 18px;
+            width: 20px;
+            height: 20px;
+            background-color: #ff6161;
+            border: 1px solid #fff;
+            font-weight: 400;
+            color: #f0f0f0;
+            line-height: 19px;
+            font-size: 12px;
+            box-sizing: border-box;
+            display: inline-block;
+            font-style: normal;
+            margin-left: 5px;
+            margin-right: 1px;
+        }
+        &[aria-haspopup="true"] i.fa-angle-down{
+            font-size: 20px;
+            position: relative;
+            -moz-transition:transform .25s cubic-bezier(.7,0,.3,1) 0s;
+            -webkit-transition:transform .25s cubic-bezier(.7,0,.3,1) 0s;
+            -o-transition:transform .25s cubic-bezier(.7,0,.3,1) 0s;
+            -ms-transition:transform .25s cubic-bezier(.7,0,.3,1) 0s;
+            transition:transform .25s cubic-bezier(.7,0,.3,1) 0s, all .25s ease-in-out;
+            -moz-transform:rotate(0deg);
+            -webkit-transform:rotate(0deg);
+            transform:rotate(0deg);
+            font-size: 12px;
+            margin-left: 5px
+        }
+        &[aria-expanded="true"]{
+            background-color: rgba(0,0,0,.05)
+        }
+        &[aria-expanded="true"] i.fa-angle-down{
+            -moz-transform:rotate(180deg);
+            -webkit-transform:rotate(180deg);
+            transform:rotate(180deg);
+        }
+    }
+}

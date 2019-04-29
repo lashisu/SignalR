@@ -1,0 +1,28 @@
+<div class="ItemBox OrderSummary" *ngIf="SideCart">
+    <h3>{{ '126.localizedText' | translate }}</h3>
+    <ng-container *ngFor="let item of cart?.cartInfo">
+        <div *ngIf="!item.isItem && item.itemTitle!='Total Credits Remaining'"
+            class="DoubleCols {{item.itemNumber=='0000'?'Total':''}}">
+            <div class="text">{{item.itemTitle}}</div>
+            <div class="amount">{{item.currency}} {{item.subTotal | number: '0.2'}}</div>
+        </div>
+    </ng-container>
+    <div class="ActionBtn">
+        <button mat-raised-button color="accent">{{ '388.localizedText' | translate }}</button>
+    </div>
+    <ul class="DeleveryInfo">
+        <li>{{ '1058.localizedText' | translate }}</li>
+        <li>{{cart?.deliveryText}}</li>
+        <li>Bank Icons</li>
+    </ul>
+</div>
+<div class="ItemBox Widget">
+    <iframe width="420" height="200" src="https://www.youtube.com/embed/9wZ2ClgnUa0?rel=0" frameborder="0"
+        allowfullscreen=""></iframe>
+</div>
+<div class="ItemBox Widget">
+    <iframe
+        src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fchilindo.auction&width=280&height=400&colorscheme=light&show_faces=true&header=false&stream=false&show_border=false&appId=158776737652373"
+        height="214" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"
+        allow="encrypted-media"></iframe>
+</div>

@@ -1,0 +1,125 @@
+<div class="cart-box">
+  <div class="Img_Msg">
+    <img src="/assets/ExpireSoon.png">
+  </div>
+  <div class="cart-title">
+    {{ '395.localizedText' | translate }}
+    <div class="cart-price-head">
+      {{ '387.localizedText' | translate }} /
+      <em>{{ '926.localizedText' | translate }}</em>
+      <i class="fas fa-info-circle" matTooltipPosition="above" matTooltip="{{ '927.localizedText' | translate }}"
+        matTooltipClass="tooltip-theme"></i>
+    </div>
+  </div>
+  <div class="cart-item-list">
+    <ul>
+      <li *ngIf="NoItemInCart" class="EmptyCart">{{ '919.localizedText' | translate }}</li>
+      <ng-container *ngFor="let item of cart?.cartInfo; let itemIndex = index">
+        <li *ngIf="item.isItem">
+          <div class="ItemRow">
+            <div class="Img">
+              <img [src]="item.imageSource+item.imageURL" />
+            </div>
+            <div class="product-details">
+              <div class="product_name">
+                <a routerLink="/{{domain}}/auction/{{item.auctionId}}"
+                  [queryParams]="{ GoNext: 'No'}">{{item.itemTitle}}</a>
+                <div class="price" *ngIf="!item.isFreeItem">{{item.price | number : '1.2'}} /
+                  <em>{{item.priceWithServiceCharge | number : '1.2'}}</em>
+                </div>
+                <div class="price" *ngIf="item.isFreeItem">
+                  <em class="free">{{ '2439.localizedText' | translate }}</em>
+                </div>
+              </div>
+              <div class="date-option">
+                <strong *ngIf="!InStockCheck(item.deliveryDate_String)">{{ '2703.localizedText' | translate }}</strong>
+                <em *ngIf="InStockCheck(item.deliveryDate_String)">{{ '2358.localizedText' | translate }}</em>
+              </div>
+              <div class="item-attributes">
+                <span class="QuantitySize" *ngIf="item.quantityToShow!='1'">
+                  <button mat-icon-button color="warn" [disabled]="item.quantitySelected=='1'"
+                    (click)="ChangeQuantity('reduce', itemIndex)">-</button>
+                  <span>
+                    <mat-select [(value)]="item.quantitySelected" panelClass="QuatityOpt">
+                      <mat-option *ngFor="let list of MatOption(item.quantityToShow); let i = index;" [value]="i+1">
+                        {{i+1}}
+                      </mat-option>
+                    </mat-select>
+                  </span>
+                  <button mat-icon-button color="primary" [disabled]="item.quantitySelected==item.quantityToShow"
+                    (click)="ChangeQuantity('increase', itemIndex)">+</button>
+                </span>
+                <span class="QuantitySize" *ngIf="item.quantityToShow=='1'">
+                  <span class="Size">{{ '43.localizedText' | translate }}: {{item.quantitySelected}}</span>
+                </span>
+                <span class="QuantitySize" *ngIf="item.relatedItemsList.length == 1">
+                  <span class="Size">{{item.relatedItemsList[0].subItemType}}</span>
+                </span>
+                <span class="QuantitySize Other" *ngIf="item.relatedItemsList.length > 1">
+                  <span>
+                    <mat-select [(value)]="item.itemNumber" (selectionChange)="ChangeCategory($event, itemIndex)">
+                      <mat-option *ngFor="let list of item.relatedItemsList" [value]="list.subItemId">
+                        {{list.subItemType}}
+                      </mat-option>
+                    </mat-select>
+                  </span>
+                </span>
+                <div class="ExpireDelete">
+                  <div class="ExpiresIn" *ngIf="item.itemExpiry !=''">
+                    {{ '1433.localizedText' | translate }}
+                    <em>
+                      <countdown-timer [end]="item.itemExpiry" [text]="'348.localizedText' | translate"
+                        (zeroTrigger)="LoadCart()"></countdown-timer>
+                    </em>
+                  </div>
+                  <div class="delete">
+                    <button type="button" mat-icon-button color="warn"><i class="far fa-trash-alt"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+</div>
+
+<div class="ChargeDetails">
+  <ng-container *ngFor="let item of cart?.cartInfo">
+    <div *ngIf="!item.isItem && item.itemTitle!='Total Credits Remaining'"
+      class="DoubleCols {{item.itemNumber=='0000'?'Total':''}}">
+      <div class="text">{{item.itemTitle}}</div>
+      <div class="amount">{{item.currency}} {{item.subTotal | number: '0.2'}}</div>
+    </div>
+  </ng-container>
+</div>
+
+<div class="CheckOutBox">
+  <ng-container *ngFor="let item of cart?.cartInfo">
+    <span *ngIf="!item.isItem && item.itemNumber=='0000'" class="amount">{{item.currency}}
+      {{item.subTotal | number: '0.2'}}</span>
+    <button *ngIf="!item.isItem && item.itemNumber=='0000'" mat-raised-button
+      color="accent">{{ '388.localizedText' | translate }}</button>
+  </ng-container>
+  <!-- <button mat-raised-button color="accent">{{ '388.localizedText' | translate }}</button> -->
+</div>
+
+<div class="delivery-details">
+  <ul>
+    <li>
+      <h3>{{ '951.localizedText' | translate }}</h3>
+      <p>{{ MyPlaceHolder(952, ['2-4']) }}</p>
+    </li>
+    <li>
+      <h3>{{ '953.localizedText' | translate }}</h3>
+      <p>{{ '954.localizedText' | translate }}</p>
+    </li>
+    <li>
+      <h3>{{ '955.localizedText' | translate }}</h3>
+      <p>
+        {{ MyPlaceHolder(956, ['(' + SelectedCountryData.chilindoContactNumberPrefix + ') ' + SelectedCountryData.chilindoContactNumber]) }}
+      </p>
+    </li>
+  </ul>
+</div>

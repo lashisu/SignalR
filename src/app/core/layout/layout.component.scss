@@ -1,0 +1,54 @@
+.dataLoader {
+    z-index: 99999999999999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.15);
+  }
+  
+  .dataLoader .mat-progress-spinner {
+    margin-top: calc((100vh - 100px) / 2);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #mainContainer{
+    height: calc(100vh - 0px) !important;
+    overflow-y:auto;
+    overflow-x: hidden;
+  }
+
+  .header{
+    position: sticky;
+    top:0;
+    display: block;
+    z-index: 99;
+  }
+
+  app-header{
+    display: inherit;
+  }
+
+  .SiteLogo{
+    display: inline-block;
+    color:#fff;
+    text-decoration: none;
+    line-height: 25px;
+    box-sizing: border-box;
+    position: relative;
+    vertical-align: middle;
+    font-family: sansita one;
+    font-size: 30px;
+    @media (max-width: 650px){
+        font-size: 24px;
+    }
+    @media (max-width: 350px){
+        font-size: 20px;
+    }
+}
+
+.MainContent{
+  min-height: calc(100vh - 332px);
+}

@@ -1,0 +1,343 @@
+/* You can add global styles to this file, and also import other style files */
+
+*{
+  outline: none;
+}
+
+@font-face{
+  font-family:sansita one;
+  src:local("Sansita One"),local("SansitaOne"),url(/assets/SansitaOne/SansitaOne-webfont.ttf) format("truetype"),url(/assets/SansitaOne/v3/sansitaone.woff) format("woff");
+  font-style:normal;
+  font-weight:400 
+}
+
+body{
+  overflow: hidden;
+}
+
+a {
+  color: #1ab7ea;
+}
+
+a:hover {
+  color: rgb(2, 113, 150);
+}
+
+iframe{
+  width: 100%;
+}
+
+.mat-drawer-container{
+  background-color : #f1f3f6 !important;
+}
+
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled){
+  color: rgba(0,0,0,.87);
+}
+
+.mat-button, .mat-raised-button, .btn-radius{
+  border-radius: 30px !important;
+  padding: 3px 24px !important;
+  font-size: 13px !important;
+}
+
+.mat-menu-panel{
+  border-radius: 0 0 4px 4px !important;
+}
+
+.mat-menu-content:not(:empty){
+  padding: 0 !important;
+}
+
+.mat-menu-content button.mat-menu-item i{
+  margin-right: 10px
+}
+
+.mat-menu-content button.mat-menu-item.LanguageList{
+  padding: 0 11px 0 16px !important;
+}
+
+.LanguageList em{
+  float: right;
+  margin-left: 30px;
+}
+
+.mat-menu-content button.mat-menu-item img{
+  width: 28px;
+  position: relative;
+  top: 5px;
+}
+
+.spacer {
+    flex: 1 1 auto;
+  }
+
+  .fake.mat-input-element{
+    max-width: 1px;
+    color: transparent;
+    visibility: hidden;
+  }
+
+  .mat-toolbar-multiple-rows, .mat-toolbar-row{
+    transition: all 0.25s ease-in-out;
+  }
+
+  .FixedTop .mat-toolbar-multiple-rows{
+    min-height: 44px;
+  }
+  .FixedTop .mat-toolbar-row{
+    height: 44px;
+  }
+
+  .FixedTop .MainNav a{
+    line-height: 44px !important;
+}
+
+  .SiteWidth{
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 16px;
+    box-sizing: border-box;
+    @media screen and (max-width:767px) {
+      padding: 0 8px;
+    }
+  }
+
+  @media (min-width: 999.9px) {
+    ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+        background: rgba(168, 168, 168, 0.2);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: rgba(168, 168, 168, 0.4);
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgba(168, 168, 168, 0.8);
+    }
+}
+
+.CategoryList{
+  ul{
+    margin:0;
+    padding:0;
+    list-style-type: none;
+    li{
+        display: inline-block;
+        margin-right: 10px;
+        line-height: 23px;
+        a{
+            text-decoration: underline;
+            color:#000;
+            &:hover, &.active{
+              color:#1ab7ea;
+            }
+        }
+    }
+  }
+}
+
+.HomeCategory{
+  background-color: #fff;
+  display: block;
+  min-height: 34.29px;
+  ul{
+    margin:0;
+    padding:0;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    li{
+        display: inline-block;
+        text-transform: uppercase;
+        font-size: 12px;
+        a{
+            text-decoration: none;
+            color:#a9a9a9;
+            display: inline-block;
+            padding: 10px 0;
+            font-weight: 500;
+            text-align: center;
+            &:hover, &.active{
+              color:#1ab7ea;
+            }
+        }
+    }
+    li + li{
+        margin-left: 10px;
+    }
+  }
+}
+
+.MainContent{
+  padding-top: 8px;
+  min-height: calc(100vh - 343px);
+  @media screen and (max-width:767px) {
+    padding: 0;
+  }
+}
+
+.mat-dialog-container{
+  padding: 0 !important;
+  border-radius: 0 !important;
+  .mat-dialog-title,
+  .mat-dialog-content,
+  .mat-dialog-actions{
+    margin: 0;
+    padding: 0
+  }
+  .mat-dialog-content{
+    position: relative;
+  }
+}
+
+.MultiTab{
+  &.mat-tab-group{
+    border: rgba(0,0,0,.12) 1px solid;
+    border-top:none;
+    background-color: #fff;
+  }
+  .mat-tab-body, .mat-tab-body-content{
+    overflow: hidden !important;
+  }
+  .mat-tab-labels{
+    justify-content: center;
+  }
+  .mat-tab-label{
+    border-bottom: rgba(0,0,0,.12) 1px solid;
+    border-top: rgba(0,0,0,.12) 1px solid;
+    opacity: 1;
+    &.mat-tab-label-active{
+      border-bottom: none;
+      border-bottom-color: #027ca5;
+      background-color: #fff;
+      color:#027ca5;
+      border-left: rgba(0, 0, 0, 0.12) 1px solid;
+      border-right: rgba(0, 0, 0, 0.12) 1px solid;
+    }
+    &.mat-tab-label:first-child{
+      border-left: none;
+    }
+    &.mat-tab-label:last-child{
+      border-right: none;
+    }
+  }
+  .mat-tab-body-wrapper{
+    padding-top: 8px;
+  }
+  .mat-tab-header{
+    background-color: rgba(0, 0, 0, 0.03);
+    border:none
+  }
+  .mat-ink-bar{
+    top:0;
+    bottom:unset;
+  }
+}
+
+.PageTop{
+  overflow: hidden;
+  margin-bottom: 16px;
+  .Heading{
+      float: left;
+      font-size: 20px;
+      color: #1ab7ea;
+      font-weight: 500;
+      display: block;
+      font-family: sans-serif;
+      line-height: 36px;
+  }
+  .SubHead{
+    float: left;
+    width: 100%;
+    font-weight: normal;
+    font-size: 13px;
+  }
+  .MiniCart{
+      float: right;
+  }
+}
+
+.TwoCols {
+  @media screen and (max-width:767px) {
+    margin-top: 8px;
+  }
+  .LeftCol {
+    width: 100%;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 16px;
+    @media screen and (min-width:768px) {
+      width: calc(100% - 316px);
+    }
+  }
+  .RightCols {
+    width: 300px;
+    display: inline-block;
+    position: -webkit-sticky;
+    position: sticky;
+    vertical-align: top;
+    top: 60px;
+    @media screen and (max-width:767px) {
+      display: none;
+    }
+    .ItemBox {
+      background: #fff;
+      border: rgba(0, 0, 0, 0.12) 1px solid;
+
+      &.Widget {
+        padding: 10px 10px 7px 10px;
+      }
+
+      & + .ItemBox {
+        margin-top: 16px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.QuantitySize{
+  .mat-select-arrow-wrapper{
+    visibility: hidden;
+    width: 1px;
+    max-width: 1px;
+  }
+  &.Other{
+  .mat-select-arrow-wrapper{
+    visibility: unset;
+    width: auto;
+    max-width: auto;
+  }
+  }
+}
+
+.QuatityOpt{
+  .mat-option-text{
+    text-align: center;
+  }
+}
+
+.tooltip-theme{
+  background: #1ab7ea;
+  text-align: center;
+  max-width: 170px !important;
+  font-size: 12px;
+  line-height: 16px;
+  margin-bottom: 5px !important;
+}
+
+    .profile-txt-1{
+        font-weight: 500;
+        font-size: 18px;
+        color: rgba(0, 0, 0, 0.76);
+    }
+    .profile-txt-2{
+        font-size: 18px;
+        color: rgba(0, 0, 0, 0.50);
+        font-style: normal;
+        margin-left: 4px;
+    }

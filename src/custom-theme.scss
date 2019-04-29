@@ -1,0 +1,78 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$mat-chilindo: (
+  50: #E1F5FE,
+  100: #B3E5FC,
+  200: #81D4FA,
+  300: #4FC3F7,
+  400: #29B6F6,
+  500: #1ab7ea,
+  600: #039BE5,
+  700: #0288D1,
+  800: #0277BD,
+  900: #01579B,
+  A100: #80D8FF,
+  A200: #40C4FF,
+  A400: #00B0FF,
+  A700: #0091EA,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $dark-primary-text,
+  )
+);
+
+$mat-chilindo-accent: (
+  50: #E8F5E9,
+  100: #C8E6C9,
+  200: #A5D6A7,
+  300: #81C784,
+  400: #66BB6A,
+  500: #4CAF50,
+  600: #43A047,
+  700: #388E3C,
+  800: #2E7D32,
+  900: #1B5E20,
+  A100: #B9F6CA,
+  A200: #69F0AE,
+  A400: #00E676,
+  A700: #00C853,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $dark-primary-text,
+  )
+);
+
+$chilindo-primary: mat-palette($mat-chilindo);
+$chilindo-accent: mat-palette($mat-chilindo-accent);
+$chilindo-warn: mat-palette($mat-red);
+$chilindo-theme: mat-light-theme($chilindo-primary, $chilindo-accent, $chilindo-warn);
+
+@include angular-material-theme($chilindo-theme);
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

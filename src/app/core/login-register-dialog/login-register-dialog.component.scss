@@ -1,0 +1,249 @@
+.LoginRegister{
+    .TopHead{
+        background-image: url('/assets/BrandBg.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: left top;
+        overflow: hidden;
+        position: relative;
+        padding: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .Identity{
+            color:#fff;
+            line-height: 30px;
+            box-sizing: border-box;
+            position: relative;
+            vertical-align: middle;
+            font-family: sansita one;
+            font-size: 24px;
+            i{
+                font-size: 18px;
+                margin-right: 3px;
+            }
+        }
+        .AvailableLanguage{
+            border:none;
+            padding: 0;
+            margin:0;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            box-shadow: 0 0 5px rgba(0,0,0,.4);
+            border-radius: 100%;
+            background-size: 150%;
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            outline: none;
+            color: transparent;
+            cursor: pointer;
+            .mat-mini-fab{
+               color: #fff;
+            }
+            img{
+                width:30px;
+            }
+        }
+    }
+    .Box{
+        overflow: hidden;
+        max-height: 0;
+        //transition: padding 1s ease-in-out, max-height 1s cubic-bezier(0, 1, 0, 1);
+        h2 {
+            display: block;
+            font-weight: normal;
+            margin: 0 -24px;
+            padding: 10px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            background: #fff;
+            z-index: 2;
+            span{
+                display: inline-block;
+                font-size: 20px;
+                line-height: 40px;
+                vertical-align: top;
+            }
+            button{
+                position: absolute;
+                left: 10px;
+            }
+        }
+        .SubmitBtn, .Navigator{
+            margin-top:10px;
+            text-align: center;
+        }
+        .ServerError{
+            font-size: 11px;
+            color: #f00;
+            margin:10px 0 0 0;
+            padding: 0;
+            li{
+                line-height: 16px;
+            }
+        }
+        &.LoginWithFb{
+            text-align: center;
+            h3{
+                color: #565a5c;
+                font-size: 13px;
+                font-weight: bold;
+                margin: 0;
+                line-height: 24px;
+                span {
+                    color: #1ab7ea;
+                }
+            }
+            button{
+                background-color: #36a;
+                color: #fff;
+                margin: 15px 0;
+                padding-left: 60px !important;
+                font-size: 16px !important;
+                position: relative;
+                border-radius: 4px !important;
+                i{
+                    position: absolute;
+                    top: 0;
+                    padding: 13px 15px;
+                    left: 0;
+                    border-right: rgba(255, 255, 255, 0.43) 1px solid;
+                }
+                &:hover{
+                    background-color: #359;
+                }
+            }
+            .or-text {
+                margin: 0 0 15px 0;
+                position: relative;
+                &:after {
+                    background-color: #e5e5e5;
+                    content: "";
+                    height: 1px;
+                    top:50%;
+                    position: absolute;
+                    left: 20%;
+                    right: 20%;
+                }
+                span {
+                    background-color: #fff;
+                    color: #1ab7ea;
+                    display: inline-block;
+                    font-size: 14px;
+                    padding: 0 15px;
+                    text-transform: uppercase;
+                    position: relative;
+                    z-index: 1;
+                }
+            }
+        }
+        &.Language{
+            &.active{
+                padding: 0;
+                h2{
+                    margin: 0;
+                }
+            }
+        }
+        &.active{
+            overflow: unset;
+            padding: 0 24px 24px 24px;
+            max-height: 1000px;
+            //transition: padding 1s ease-in-out, max-height 1s ease-in-out;
+            &.LoginWithFb{
+                padding-top:24px
+            }
+        }
+        .SelectFromList{
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            li {
+                padding: 7px 15px;
+                border-top: #e7e7e7 1px solid;
+                overflow: hidden;
+                position: relative;
+                cursor: pointer;
+                span {
+                    display: inline-block;
+                    width: 45px;
+                    height: 32px;
+                    overflow: hidden;
+                    vertical-align: top;
+                    img {
+                        float: left;
+                        width: 32px;
+                        vertical-align: -webkit-baseline-middle;
+                    }
+                }
+                div {
+                    color: #717171;
+                    line-height: normal;
+                    display: inline-block;
+                    vertical-align: top;
+                    font-size: 14px;
+                    em {
+                        display: block;
+                        line-height: normal;
+                        opacity: .6;
+                        font-size: 11px;
+                        margin-top: 2px;
+                    }
+                }
+                &:not(.Group):after {
+                    position: absolute;
+                    right: 14px;
+                    top: 14px;
+                    height: 16px;
+                    width: 16px;
+                    border-radius: 100%;
+                    border: #d5d8df 1px solid;
+                    content: "";
+                }
+                &.Group{
+                    background-color: #fbfbfb;
+                    font-size: 12px;
+                    color: #c5c5c5;
+                    padding: 8px 15px;
+                    cursor: unset;
+                }
+            }
+
+            button {
+                position: absolute;
+                right: -100px;
+                top: 0px;
+                bottom: 0px;
+                content: "";
+                background-color: #1ab7ea;
+                color: #fff;
+                padding: 0px 20px;
+                border: none;
+                z-index: 1;
+                font-family: 'Open Sans', sans-serif;
+                transition: right .3s ease-in-out;
+                cursor: pointer;
+            }
+            & li.active button {
+                right: 0px;
+            }
+
+        }
+        .mat-form-field{
+            width: 100%;
+            position: relative;
+            font-size: 14px;
+            app-errors{
+                position: absolute;
+                font-size: 11px;
+                color: #f00;
+                bottom:-15px;
+                left:0;
+                right:0;
+            }
+        }
+    }
+}

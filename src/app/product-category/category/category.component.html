@@ -1,0 +1,33 @@
+<app-category-nav class="HomeCategory"></app-category-nav>
+<app-promis></app-promis>
+<section class="SiteWidth">
+  <div class="MainContent">
+    <ng-container *ngIf="!FeedLoaded">
+      <div class="FeedList">
+        <div class="feed-card" *ngFor="let feed of FeedList">
+          <div class="animated-background">
+            <div class="background-masker img"></div>
+            <div class="background-masker img_gap"></div>
+            <div class="background-masker time_gap"></div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="FeedLoaded">
+      <div class="FeedList">
+        <mat-card class="feed-card" *ngFor="let feed of FeedList" routerLink="/{{domain}}/product/{{feed.itemNumber}}">
+          <img mat-card-image [src]="feed.imageSource">
+          <mat-card-actions class="ActionBox">
+            <div class="TimeTicker">
+              <countdown-timer [end]="feed.endDateTimeUTC_String" [text]="'348.localizedText' | translate">
+              </countdown-timer>
+            </div>
+            <div class="price">
+              <i class="fas fa-gavel fa-flip-horizontal"></i> {{currencyCode +' '+ feed.currentBidInUserCurrency}}
+            </div>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </ng-container>
+  </div>
+</section>

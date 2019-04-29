@@ -1,0 +1,257 @@
+<div class="LoginRegister">
+  <div class="TopHead">
+    <div class="Identity">
+      <i class="fas fa-gavel fa-flip-horizontal"></i>
+      Chilindo
+    </div>
+    <button (click)="SelectedModule = 'Language'" class="AvailableLanguage" matRipple
+      [ngStyle]="{'background-image':'url(/assets'+SelectedFlag+')'}" title="{{SelectedLang}}">
+      {{SelectedLang}}
+    </button>
+  </div>
+  <div mat-dialog-content>
+    <!-- Login With Facebook -->
+    <div class="Box LoginWithFb {{SelectedModule == 'LoginWithFb'? 'active' : ''}}">
+      <h3>{{ '437.localizedText' | translate }} <span class="country"></span>&nbsp;{{ '438.localizedText' | translate }}
+        <span>&nbsp;{{ '439.localizedText' | translate }}</span>
+        <span>&nbsp;{{ '440.localizedText' | translate }}</span>
+        <span>&nbsp;{{ '441.localizedText' | translate }}</span></h3>
+      <h3>
+        {{ '442.localizedText' | translate }}
+        <span>{{ '443.localizedText' | translate }}</span>
+        <span>{{ '444.localizedText' | translate }}</span>
+      </h3>
+      <div>
+        <button mat-raised-button (click)="WithLoginFacebook()">
+          <i class="fab fa-facebook-f"></i>
+          {{ '445.localizedText' | translate }}
+        </button>
+      </div>
+      <div class="or-text">
+        <span>{{ '2412.localizedText' | translate }}</span>
+      </div>
+      <div class="Navigator">
+        <a mat-button (click)="SelectedModule ='Login'">{{ '379.localizedText' | translate }}</a>
+        <a mat-button (click)="SelectedModule ='Register'">{{ '2411.localizedText' | translate }}</a>
+      </div>
+    </div>
+
+    <!-- Select Country -->
+    <div class="Box Language {{SelectedModule == 'Country'? 'active' : ''}}">
+      <h2>
+        <button mat-icon-button (click)="SelectedModule ='Register'">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <span>{{ '995.localizedText' | translate }}</span>
+      </h2>
+      <ul class="SelectFromList">
+        <li class="Group">{{ '2607.localizedText' | translate }}</li>
+        <li *ngFor="let Country of CountryListSuggested" [class.active]="PickedCountry == Country.domainCode"
+          (click)="PickedCountry = Country.domainCode">
+          <span><img src="https://cdn-chilindo.com/gfx/flags/{{Country.domainCode}}.png"
+              [alt]="Country.domainCode"></span>
+          <div>
+            {{Country.countryName}}
+            <em>{{Country.countryNameLocal}}</em>
+          </div>
+          <button type="button"
+            (click)="SelectedModule ='Register'; ChangeCountry(Country.countryName, Country.domainCode, Country.countryNameLocal)">{{ '2620.localizedText' | translate }}</button>
+        </li>
+        <li class="Group">{{ '2608.localizedText' | translate }}</li>
+        <li *ngFor="let Country of CountryListAll" [class.active]="PickedCountry == Country.domainCode"
+          (click)="PickedCountry = Country.domainCode">
+          <span><img src="https://cdn-chilindo.com/gfx/flags/{{Country.domainCode}}.png"
+              [alt]="Country.domainCode"></span>
+          <div>
+            {{Country.countryName}}
+            <em>{{Country.countryNameLocal}}</em>
+          </div>
+          <button type="button"
+            (click)="SelectedModule ='Register'; ChangeCountry(Country.countryName, Country.domainCode, Country.countryNameLocal)">{{ '2620.localizedText' | translate }}</button>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Register -->
+    <div class="Box Register {{SelectedModule == 'Register'? 'active' : ''}}">
+      <h2>
+        <button mat-icon-button (click)="SelectedModule ='LoginWithFb'">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <span>{{ '2410.localizedText' | translate }}</span>
+      </h2>
+      <form [formGroup]="Registerform" autocomplete="off" (ngSubmit)="doRegister(Registerform)">
+        <mat-form-field floatLabel="never">
+          <input type="text" matInput placeholder="{{ '106.localizedText' | translate }}" aria-label="Username"
+            formControlName="userName" maxlength="50" minlength="6" required>
+          <app-errors [control]="Registerform.get('userName')" minLength="{{ '226.localizedText' | translate }}"
+            require="{{ '226.localizedText' | translate }}"></app-errors>
+        </mat-form-field>
+        <mat-form-field floatLabel="never">
+          <input type="text" matInput placeholder="{{ '88.localizedText' | translate }}" aria-label="Email"
+            formControlName="email" required>
+          <app-errors [control]="Registerform.get('email')" email="{{ '228.localizedText' | translate }}"
+            require="{{ '220.localizedText' | translate }}"></app-errors>
+        </mat-form-field>
+        <mat-form-field floatLabel="never">
+          <input matInput [type]="hideR ? 'text' : 'password'" placeholder="{{ '89.localizedText' | translate }}"
+            aria-label="Password" formControlName="password" minlength="6" maxlength="50" required>
+          <span matSuffix style="cursor:pointer" (click)="hideR = !hideR">
+            <i class="far {{hideR ? 'eye' : 'fa-eye-slash'}}"></i>
+          </span>
+          <app-errors [control]="Registerform.get('password')" minLength="{{ '221.localizedText' | translate }}"
+            require="{{ '221.localizedText' | translate }}"></app-errors>
+        </mat-form-field>
+        <mat-form-field floatLabel="never">
+          <input type="hidden" formControlName="country" required>
+          <input matInput required style="cursor:pointer" formControlName="CountryName" readonly
+            (click)="SelectedModule = 'Country'" type="text" placeholder="{{ '995.localizedText' | translate }}"
+            aria-label="Select Country">
+          <span matSuffix style="cursor:pointer" (click)="SelectedModule = 'Country'">
+            <i class="fas fa-angle-down"></i>
+          </span>
+          <app-errors [control]="Registerform.get('CountryName')" require="{{ '1018.localizedText' | translate }}">
+          </app-errors>
+        </mat-form-field>
+        <ul class="ServerError" *ngIf="RegisterErrors">
+          <li *ngFor="let Error of RegisterErrors">
+            {{Error}}
+          </li>
+        </ul>
+        <div class="SubmitBtn">
+          <button type="submit" mat-raised-button color="primary">{{ '109.localizedText' | translate }}</button>
+        </div>
+      </form>
+      <div class="Navigator">
+        <a mat-button (click)="SelectedModule ='ForgotPassword'">{{ '91.localizedText' | translate }}</a>
+        <a mat-button (click)="SelectedModule ='Login'">{{ '2413.localizedText' | translate }}</a>
+      </div>
+    </div>
+
+    <!-- Login With Username/Email -->
+    <div class="Box Login {{SelectedModule == 'Login'? 'active' : ''}}">
+      <h2>
+        <button mat-icon-button (click)="SelectedModule ='LoginWithFb'">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <span>{{ '379.localizedText' | translate }}</span>
+      </h2>
+      <form [formGroup]="loginform" autocomplete="off" (ngSubmit)="doLogin(loginform)">
+        <mat-form-field floatLabel="never">
+          <input type="text" matInput placeholder="{{ '451.localizedText' | translate }}" aria-label="Username"
+            formControlName="userName" required>
+          <app-errors [control]="loginform.get('userName')" require="{{ '244.localizedText' | translate }}">
+          </app-errors>
+        </mat-form-field>
+        <mat-form-field floatLabel="never">
+          <input matInput [type]="hide ? 'text' : 'password'" placeholder="{{ '89.localizedText' | translate }}"
+            aria-label="Password" formControlName="password" required>
+          <span matSuffix style="cursor:pointer" (click)="hide = !hide">
+            <i class="far fa-{{hide ? 'eye' : 'far fa-eye-slash'}}"></i>
+          </span>
+          <app-errors [control]="loginform.get('password')" require="{{ '221.localizedText' | translate }}">
+          </app-errors>
+        </mat-form-field>
+        <ul class="ServerError" *ngIf="LoginError">
+          <li *ngFor="let Error of LoginError">
+            {{Error}}
+          </li>
+        </ul>
+        <div class="SubmitBtn">
+          <button type="submit" mat-raised-button color="primary"
+            [disabled]="loginform.invalid">{{ '379.localizedText' | translate }}</button>
+        </div>
+      </form>
+      <div class="Navigator">
+        <a mat-button (click)="SelectedModule ='ForgotPassword'">{{ '91.localizedText' | translate }}</a>
+        <a mat-button (click)="SelectedModule ='Register'">{{ '455.localizedText' | translate }}</a>
+      </div>
+    </div>
+
+    <!-- Forgot Password -->
+    <div class="Box ForgotPassword {{SelectedModule == 'ForgotPassword'? 'active' : ''}}">
+      <h2>
+        <button mat-icon-button (click)="SelectedModule ='LoginWithFb'">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <span>{{ '91.localizedText' | translate }}</span>
+      </h2>
+      <form [formGroup]="ForgotPasswordform" autocomplete="off" (ngSubmit)="ResetPassword(ForgotPasswordform)">
+        <mat-form-field floatLabel="never">
+          <input type="text" matInput placeholder="{{ '104.localizedText' | translate }}" aria-label="Email address"
+            formControlName="email" required>
+          <app-errors [control]="ForgotPasswordform.get('email')" require="{{ '92.localizedText' | translate }}"
+            email="{{ '220.localizedText' | translate }}"></app-errors>
+        </mat-form-field>
+        <ul class="ServerError" *ngIf="ForgotPasswordError">
+          <li *ngFor="let Error of ForgotPasswordError">
+            {{Error}}
+          </li>
+        </ul>
+        <div class="SubmitBtn">
+          <button type="submit" mat-raised-button color="primary"
+            [disabled]="ForgotPasswordform.invalid">{{ '91.localizedText' | translate }}</button>
+        </div>
+      </form>
+      <div class="Navigator">
+        <a mat-button (click)="SelectedModule ='Register'">{{ '2411.localizedText' | translate }}</a>
+        <a mat-button (click)="SelectedModule ='Login'">{{ '2413.localizedText' | translate }}</a>
+      </div>
+    </div>
+
+    <!-- Change Language -->
+    <div class="Box Language {{SelectedModule == 'Language'? 'active' : ''}}">
+      <h2>
+        <button mat-icon-button (click)="SelectedModule ='LoginWithFb'">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <span>{{ '2414.localizedText' | translate }}</span>
+      </h2>
+      <ul class="SelectFromList">
+        <li *ngFor="let Language of Languages; let i = index" [class.active]="PickedLanguage == i"
+          (click)="SelectLanguage(i)">
+          <span><img src="https://cdn-chilindo.com{{Language.imagePath}}" [alt]="Language.languageCode"></span>
+          <div>
+            {{Language.language}}
+            <em>{{Language.language}}</em>
+          </div>
+          <button type="button"
+            (click)="SelectedModule ='LoginWithFb'; ChangeLanguage(Language.languageCode, Language.imagePath)">{{ '2620.localizedText' | translate }}</button>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Country Selection after FB Register -->
+    <div class="Box Language {{SelectedModule == 'FB_Country'? 'active' : ''}}">
+      <h2>
+        <span>{{ '995.localizedText' | translate }}</span>
+      </h2>
+      <ul class="SelectFromList">
+        <li class="Group">{{ '2607.localizedText' | translate }}</li>
+        <li *ngFor="let Country of CountryListSuggested" [class.active]="PickedCountryFB == Country.domainCode"
+          (click)="PickedCountryFB = Country.domainCode">
+          <span><img src="https://cdn-chilindo.com/gfx/flags/{{Country.domainCode}}.png"
+              [alt]="Country.domainCode"></span>
+          <div>
+            {{Country.countryName}}
+            <em>{{Country.countryNameLocal}}</em>
+          </div>
+          <button type="button"
+            (click)="Select_Country_FB(Country.domainCode)">{{ '2620.localizedText' | translate }}</button>
+        </li>
+        <li class="Group">{{ '2608.localizedText' | translate }}</li>
+        <li *ngFor="let Country of CountryListAll" [class.active]="PickedCountryFB == Country.domainCode"
+          (click)="PickedCountryFB = Country.domainCode">
+          <span><img src="https://cdn-chilindo.com/gfx/flags/{{Country.domainCode}}.png"
+              [alt]="Country.domainCode"></span>
+          <div>
+            {{Country.countryName}}
+            <em>{{Country.countryNameLocal}}</em>
+          </div>
+          <button type="button"
+            (click)="Select_Country_FB(Country.domainCode)">{{ '2620.localizedText' | translate }}</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+{
+  "/api/*": {
+    "target": "https://dev-api.chilindo.com",
+    "secure": false,
+    "pathRewrite": {
+      "^api": ""
+    },
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "debug": true
+  }
+}

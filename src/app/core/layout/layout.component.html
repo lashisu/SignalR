@@ -1,0 +1,23 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="over" fixedInViewport="true" fixedTopGap="0" fixedBottomGap="0">
+    <mat-nav-list>
+      <a (click)="sidenav.toggle()" mat-list-item routerLink="" routerLinkActive="active">
+        Home
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div id="mainContainer">
+      <mat-toolbar color="primary" class="header">
+        <mat-toolbar-row class="SiteWidth">
+          <a class="SiteLogo" aria-label="Go to Home" routerLink="feed">
+            <i class="fas fa-gavel fa-flip-horizontal"></i>
+            Chilindo
+          </a>
+          <span class="spacer"></span>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,32 @@
+<div class="cart-box">
+    <div class="cart-title">
+      Order Details 
+      <button mat-flat-button color="accent" class="btn-radius" *ngIf="!ItemsinOrder?.isOrderReviewed">Review the Order</button>
+    </div>
+    <div class="cart-item-list">
+      <ul>
+        <li *ngIf="NoItemsInOrder" class="NoDetails">Details not found!</li>
+        <ng-container *ngFor="let item of ItemsinOrder?.basketInfo">
+          <li>
+            <div class="ItemRow">
+              <div class="Img">
+                <img [src]="item.imageSource+item.imgPath" />
+              </div>
+              <div class="product-details">
+                <div class="product_name">{{item.itemSubject}} <span *ngIf="item.isFreeItem">Free Item</span></div>
+                <div class="date-option">Qty: {{item.quantitySelected}} | Delivered On {{item.deliveryDate | date : 'EEE, MMM d'}}</div>
+                <div class="item-btn">
+                  <button mat-flat-button color="primary" class="btn-radius" *ngIf="!ItemsinOrder?.isProductReviewed">Write a Review</button>
+                </div>
+              </div>
+              <div class="product-pricing">
+                <div class="price">{{item.amount | number : '1.2'}} /
+                  <em>{{item.priceWithServiceCharge | number : '1.2'}}</em></div>
+                <div class="serviceCharge">10% service charge</div>
+              </div>
+            </div>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+  </div>

@@ -1,0 +1,9 @@
+<div *ngIf="control && control.touched && control.errors">
+  <span *ngIf="control.errors.required">{{require}}</span>
+  <span *ngIf="control.errors.minlength">{{minLength}}</span>
+  <span *ngIf="control.errors.maxlength">{{maxLength}}</span>
+  <span *ngIf="!control.errors.required && control.errors.email">{{email}}</span>
+  <span *ngIf="control.errors.digit4only">Max 4 digit is allowed</span>
+  <span *ngIf="control.errors.pincode">Not a valid pincode</span>
+  <span *ngIf="control.errors.pattern">{{pattern}}</span>
+</div>

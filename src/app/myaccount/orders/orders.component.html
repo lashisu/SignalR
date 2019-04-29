@@ -1,0 +1,47 @@
+<div class="cart-box">
+  <div class="cart-title">
+    My Orders
+  </div>
+  <div class="cart-item-list">
+    <ul>
+      <li *ngIf="NoOrderList" class="NoOrderList">No order found!</li>
+      <ng-container *ngFor="let item of OrderList">
+        <li>
+          <div class="ItemRow">
+            <div class="ItemCols">
+              <span class="OrderId">
+                <a routerLink="/{{domain}}/secure/orderdetails/{{item.orderGuid}}">ORD{{item.orderId}}</a>
+              </span>
+            </div>
+            <div class="ItemCols">
+              <span class="price">{{item.currency + ' ' + item.amount}}</span>
+            </div>
+          </div>
+          <div class="ItemRow">
+            <div class="ItemCols">
+              <span class="PaymentType">Payment Type <em>{{item.paymentType}} </em> </span>
+              <span class="msg" *ngIf="ShowPay(item.orderStatusId, item.paymentType)">
+                Due by <em>{{item.dueBy | date: 'mediumDate'}}</em>
+              </span>
+            </div>
+            <div class="ItemCols">
+              <span class="txt {{PutClass(item.paymentStatus)}}">{{item.paymentStatus}}</span>
+            </div>
+          </div>
+          <div class="ItemAction">
+            <button mat-stroked-button class="btn-radius"
+              routerLink="/{{domain}}/secure/invoice/{{item.orderGuid}}">Invoice</button>
+            <button mat-stroked-button class="btn-radius" *ngIf="item.isRecieptUploaded" color="primary"
+              (click)="DownloadInvoice(item.formattedInvoiceNo)">Receipt</button>
+            <button type="button" *ngIf="ShowTracking(item.orderStatusId)" mat-stroked-button class="btn-radius"
+              color="accent" routerLink="/{{domain}}/secure/trackorders/{{item.orderGuid}}">Track Order</button>
+            <button mat-flat-button class="btn-radius" routerLink="/{{domain}}/secure/invoice/{{item.orderGuid}}"
+              *ngIf="ShowPay(item.orderStatusId, item.paymentType)" color="primary">Pay</button>
+            <button mat-flat-button color="accent" class="btn-radius" *ngIf="item.showReopenOrder"
+              (click)="MoveToCart(item.orderGuid)">Move to Cart</button>
+            <button mat-flat-button class="btn-radius" *ngIf="item.showReview" (click)="Review()">Review</button>
+          </div>
+        </li>
+      </ng-container>
+    </ul>
+  </div>

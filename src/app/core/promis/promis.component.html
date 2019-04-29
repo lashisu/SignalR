@@ -1,0 +1,16 @@
+<div class="Promis">
+  <div class="SiteWidth">
+    <ul>
+      <li><i class="fas fa-calendar"></i> <span>{{ '482.localizedText' | translate }}</span></li>
+      <li><i class="fas fa-truck fa-flip-horizontal"></i>
+        <span>{{ MyPlaceHolder(1007, [currencyCode + ' ' + deliveryPriceInUserCurrency]) }}</span>
+      </li>
+      <li><i class="fas fa-gavel fa-flip-horizontal"></i>
+        <span>{{ MyPlaceHolder(1020, [currencyCode + ' ' + minBidInUserCurrency]) }}</span>
+      </li>
+      <li><i class="fas fa-phone-square fa-flip-horizontal"></i>
+        <span>{{ MyPlaceHolder(1016, ['(' + chilindoContactNumberPrefix + ') ' + chilindoContactNumber]) }}</span>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<p>
+  {{ProductData|json}}
+</p>
+<h1 *ngIf="ProductData">
+  <countdown-timer [end]="ProductData.endDateTimeUTC_String" [text]="'348.localizedText' | translate">
+  </countdown-timer>
+</h1>
+<!-- 
+<vg-player>
+  <video #myMedia [vgHls]="'https://vdo.chilindo.com/hls/40-655/40-655_Wireless-N_WiFi_Repeater_Pocky_WEB_EN_24s_,240,360,480,720,960,1080,.mp4.urlset/master.m3u8'" [vgHlsHeaders]="headers"
+    (onGetBitrates)="hlsBitrates = $event" id="my-video" type="video/mp4" controls>
+  </video>
+</vg-player> -->

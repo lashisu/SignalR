@@ -1,0 +1,124 @@
+<div class="PageTop">
+  <div class="Heading">{{ '622.localizedText' | translate }}</div>
+</div>
+<mat-tab-group class="MultiTab" mat-stretch-tabs>
+  <mat-tab label="{{ '132.localizedText' | translate }}">
+    <div class="mat-tab-main">
+      <ul>
+        <li *ngFor="let row of BidHistory" (click)="GoToProductAuction(row.itemNumber, row.auctionId)">
+          <div class="prd_block">
+            <div class="product_img">
+              <img [src]="row.imageBaseAddress+row.imagePath" alt="Product Name" />
+            </div>
+          </div>
+          <div class="prd_block">
+            <div class="Win"><span>{{ '140.localizedText' | translate }}</span> <em>:</em> {{row.winningBid}}</div>
+            <div class="Desc"><span>{{ '136.localizedText' | translate }}</span> <em>:</em> {{row.userCurrentBid}}</div>
+          </div>
+          <div class="prd_block">
+            <div class="title">{{ '145.localizedText' | translate }}</div>
+            <div class="date">
+              {{row.endDateTimeUTC | date:'dd-MMM-y'}} {{row.endDateTimeUTC | date:'HH:mm:ss'}}
+            </div>
+          </div>
+          <div class="prd_block">
+            <div class="NextBid">
+              <button mat-flat-button color="accent" (click)="GoToProductAuction(row.itemNumber, row.auctionId)">Go to
+                auction</button>
+            </div>
+          </div>
+        </li>
+        <li *ngIf="NoBidHistory" class="NoHistory">{{ '964.localizedText' | translate }}</li>
+      </ul>
+    </div>
+  </mat-tab>
+  <mat-tab label="{{ '133.localizedText' | translate }}">
+    <div class="mat-tab-main">
+      <ul>
+        <li class="head">
+          <div class="prd_block">
+            <div class="product_img">
+              Item
+            </div>
+          </div>
+          <div class="prd_block" (click)="GoToAuction(row.auctionId)">
+            Your winning bid
+          </div>
+          <div class="prd_block" (click)="GoToAuction(row.auctionId)">
+            Your maximum bid
+          </div>
+          <div class="prd_block">
+            Completed
+          </div>
+        </li>
+        <li *ngFor="let row of BidWonHistory" (click)="GoToAuction(row.auctionId)">
+          <div class="prd_block">
+            <div class="product_img">
+              <img [src]="row.imageBaseAddress+row.imagePath" alt="Product Name" />
+            </div>
+          </div>
+          <div class="prd_block">
+            <div class="Win"><span>{{ '137.localizedText' | translate }}</span> <em>:</em> {{row.winningBid}}</div>
+            <div class="Desc"><span>{{ '139.localizedText' | translate }}</span> <em>:</em> {{row.userCurrentBid}}</div>
+          </div>
+          <div class="prd_block">
+            <div class="BidMsg">{{ '976.localizedText' | translate }}</div>
+            <div class="BidDate">
+              {{row.endDateTimeUTC | date:'dd-MMM-y'}} {{row.endDateTimeUTC | date:'HH:mm:ss'}}
+            </div>
+          </div>
+        </li>
+        <li *ngIf="NoBidWonHistory" class="NoHistory">{{ '965.localizedText' | translate }}</li>
+      </ul>
+    </div>
+  </mat-tab>
+  <mat-tab label="{{ '134.localizedText' | translate }}">
+    <div class="mat-tab-main">
+      <ul>
+        <li class="head">
+          <div class="prd_block">
+            <div class="product_img">
+              Item
+            </div>
+          </div>
+          <div class="prd_block" (click)="GoToAuction(row.auctionId)">
+            Your maximum bid
+          </div>
+          <div class="prd_block" (click)="GoToAuction(row.auctionId)">
+            Highest Bidder
+          </div>
+          <div class="prd_block">
+            Bids
+          </div>
+          <div class="prd_block">
+            Completed
+          </div>
+        </li>
+        <li *ngFor="let row of BidLostHistory">
+          <div class="prd_block" (click)="GoToAuction(row.auctionId)">
+            <div class="product_img">
+              <img [src]="row.imageBaseAddress+row.imagePath" alt="Product Name" />
+            </div>
+          </div>
+          <div class="prd_block" (click)="GoToAuction(row.auctionId)">
+            <div class="Lost"><span>{{ '142.localizedText' | translate }}</span> <em>:</em> {{row.winningBid}}</div>
+            <div class="Desc"><span>{{ '139.localizedText' | translate }}</span> <em>:</em> {{row.userCurrentBid}}</div>
+          </div>
+          <div class="prd_block" (click)="GoToAuction(row.auctionId)">
+            <div class="title">{{ '145.localizedText' | translate }}</div>
+            <div class="date">
+              {{row.endDateTimeUTC | date:'dd-MMM-y'}} {{row.endDateTimeUTC | date:'HH:mm:ss'}}
+            </div>
+          </div>
+          <div class="prd_block">
+            <div class="NextBid">
+              <button mat-flat-button color="warn"
+                (click)="GoToProduct(row.itemNumber)">{{ '609.localizedText' | translate }}</button>
+            </div>
+          </div>
+        </li>
+        <li *ngIf="NoBidLostHistory" class="NoHistory">{{ '965.localizedText' | translate }}</li>
+      </ul>
+    </div>
+  </mat-tab>
+</mat-tab-group>

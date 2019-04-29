@@ -1,0 +1,9 @@
+<div mat-dialog-content>
+  <div class="dialog-type {{data.type}}">
+    <i class="{{data.type =='error' ? 'far fa-times-circle' : data.type =='success' ? 'far fa-check-circle' : data.type =='warning' ? 'fas fa-exclamation-circle' : data.type =='info' ? 'far fa-question-circle' : ''}}"></i>
+  </div>
+  <div class="dialog-msg">{{data.msg}}</div>
+</div>
+<div class="dialog-action">
+  <button mat-raised-button (click)="closeMe()">OK</button>
+</div>

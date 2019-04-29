@@ -1,0 +1,127 @@
+.mat-tab-main{
+    margin:0 8px 8px 8px;
+    ul{
+        margin:0;
+        padding: 0;
+        list-style-type: none;
+        max-height: calc(100vh - 277px);
+        overflow: auto;
+        li{
+            border: rgba(0,0,0,.08) 1px solid;
+            overflow: hidden;
+            padding:5px;
+            cursor: pointer;
+            &.head{
+                position: sticky;
+                top:0;
+                z-index: 1;
+                background: #F7F7F7 !important;
+                cursor: default;
+            }
+            .prd_block{
+                float: left;
+                width: 33.33333333333333333333%;
+                .product_img{
+                    float: left;
+                    width:36px;
+                    position: relative;
+                    overflow: hidden;
+                    img{
+                        float: left;
+                        width: 100%;
+    
+                    }
+                }
+                .product_detail{
+                    margin-left: 10px;
+                    float: left;
+                }
+                .Name{
+                    font-size: 18px;
+                    color : rgba(0,0,0,.76);
+                    height: 22px;
+                    line-height: 22px;
+                }
+                .Desc{
+                    color : rgba(0,0,0,.67);
+                    font-size: 14px;
+                    line-height: 14px;
+                    margin-top: 13px;
+                }
+                span{
+                    font-weight: 500;
+                    display: inline-block;
+                    width: 135px;
+                }
+                em{
+                    display: inline-block;
+                    width: 15px;
+                    font-style: normal;
+                }
+                .Win{
+                    color: #00b6e7;
+                    height: 22px;
+                    line-height: 22px;
+                    font-size: 14px;
+                }
+                .Lost{
+                    color: #f00;
+                    height: 22px;
+                    line-height: 22px;
+                    font-size: 14px;
+                }
+                .BidMsg{
+                    line-height: 23px;
+                    color: #f00;
+                    font-size: 13px;
+                    text-align: right
+                }
+                .BidDate{
+                    color : rgba(0,0,0,.87);
+                    font-size: 16px;
+                    line-height: 26px;
+                    text-align: right
+                }
+                .NextBid{
+                    text-align: right;
+                    margin-top:6px;
+                    margin-right:6px;
+                }
+                .title{
+                    font-size: 11px;
+                    color: rgba(0, 0, 0, 1);
+                    margin-bottom: 10px;
+                    display: inline-block;
+                    background: rgba(0,0,0,.1);
+                    padding: 3px 5px;
+                    border-radius: 4px;
+                }
+                .date{
+                    font-size: 16px;
+                    line-height: 16px;
+                }
+            }
+            &:nth-child(odd){
+                background-color: rgba(0,0,0,.03);
+            }
+            & + li{
+                margin-top: 8px;
+            }
+            &.NoHistory{
+                color:#f00;
+                padding: 20px;
+                text-align: center;
+                cursor: default;
+            }
+        }
+    }
+}
+
+.BidTitle{
+    width: 100%;
+    display: inline-block;
+    position: -webkit-sticky;
+    position: sticky;
+    vertical-align: top;
+    top: 60px;
+    }

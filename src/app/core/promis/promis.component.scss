@@ -1,0 +1,45 @@
+.Promis{
+    background-color: #696969;
+    min-height: 36px;
+    @media (max-width: 540px) {
+        display: none;
+    }
+    ul{
+        margin:0;
+        padding:0;
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        li{
+            font-size: 11px;
+            color: #fff;
+            text-transform: uppercase;
+            text-align: left;
+            line-height: 36px;
+            white-space: nowrap;
+            width: 25%;
+            i{
+                font-size: 18px;
+                position: relative;
+                top: 3px;
+                margin-right: 5px;
+                @media (max-width: 767px) {
+                    font-size: 25px;
+                    top:5px;
+                }
+            }
+            span{
+                display: inline-block;
+                vertical-align: top;
+                text-align: left;
+                white-space: normal;
+                @media (max-width: 767px) {
+                    width: 85px;
+                    line-height: normal;
+                    margin-top:5px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,10 @@
+<div mat-dialog-content>
+  <div class="dialog-type">
+    <i class="fas fa-exclamation-circle"></i>
+  </div>
+  <div class="dialog-msg">{{data.msg}}</div>
+</div>
+<div class="dialog-action">
+  <button mat-raised-button (click)="closeMe()">No</button>
+  <button mat-raised-button [mat-dialog-close]="true" cdkFocusInitial color="warn">Yes</button>
+</div>

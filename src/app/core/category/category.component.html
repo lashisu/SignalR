@@ -1,0 +1,14 @@
+<section class="SiteWidth">
+  <ul *ngIf="Categories">
+    <li>
+      <a routerLink="/{{domain}}/feed" routerLinkActive="active">
+        {{ '815.localizedText' | translate }}
+      </a>
+    </li>
+    <li *ngFor="let Category of Categories">
+      <a routerLink="/{{domain}}/category/{{Category.id}}/{{url(Category.title)}}" routerLinkActive="active">
+        {{Category.title}}
+      </a>
+    </li>
+  </ul>
+</section>

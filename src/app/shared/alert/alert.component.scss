@@ -1,0 +1,30 @@
+.dialog-type{
+    font-size: 82px;
+    text-align: center;
+    padding:16px;
+    &.error{
+        color:#f44336
+    }
+    &.success{
+        color:#66bb6a
+    }
+    &.warning{
+        color:#f57c00
+    }
+    &.info{
+        color:#039be5
+    }
+}
+
+.dialog-msg{
+    text-align: center;
+    font-size: 16px;
+    line-height: 32px;
+    padding:0 16px 16px 16px;
+}
+
+.dialog-action{
+    text-align: center;
+    padding: 10px 0;
+    border-top:rgba(0,0,0,.12) 1px solid;
+}

@@ -1,0 +1,48 @@
+<nav class="MainNav" *ngIf="Languages">
+  <a mat-button routerLink="/{{domain}}/secure/cart" [attr.aria-label]="'78.localizedText' | translate"
+    routerLinkActive="active" *ngIf="userName != null">
+    <i class="fas fa-shopping-cart fa-flip-horizontal"></i>
+    <span class="txt">{{ '78.localizedText' | translate }}</span>
+    <em *ngIf="CartCount">{{CartCount}}</em>
+  </a>
+  <a mat-button routerLink="/{{domain}}/secure/myauctions" [attr.aria-label]="'76.localizedText' | translate"
+    routerLinkActive="active" *ngIf="userName != null">
+    <i class="fas fa-gavel fa-flip-horizontal"></i>
+    <span class="txt">{{ '76.localizedText' | translate }}</span>
+  </a>
+  <a mat-button [matMenuTriggerFor]="myaccount" *ngIf="userName != null">
+    <i class="fas fa-user txt_icon"></i>
+    <span class="txt_u">{{firstName == null ? userName : firstName}}</span>
+    <i class="fas fa-angle-down"></i>
+  </a>
+  <a mat-button *ngIf="userName == null" (click)="OpenLoginModal()">
+    <i class="fas fa-lock"></i>
+    <span>{{ '79.localizedText' | translate }}</span>
+  </a>
+  <mat-menu #myaccount="matMenu" xPosition="before">
+    <button mat-menu-item routerLink="/{{domain}}/secure/profile" [attr.aria-label]="'534.localizedText' | translate"
+      routerLinkActive="active">
+      <i class="fas fa-user"></i>
+      <span>{{ '534.localizedText' | translate }}</span>
+    </button>
+    <button mat-menu-item routerLink="/{{domain}}/secure/orders" [attr.aria-label]="'535.localizedText' | translate"
+      routerLinkActive="active">
+      <i class="far fa-list-alt"></i>
+      <span>{{ '535.localizedText' | translate }}</span>
+    </button>
+    <button mat-menu-item (click)="Logout()">
+      <i class="fas fa-lock"></i>
+      <span>{{ '81.localizedText' | translate }}</span>
+    </button>
+  </mat-menu>
+  <a mat-button [matMenuTriggerFor]="mylanguage">
+    <span><img src="https://cdn-chilindo.com{{SelectedFlag}}" alt="{{SelectedLang}}" /></span>
+  </a>
+  <mat-menu #mylanguage="matMenu" xPosition="before">
+    <button mat-menu-item class="LanguageList" *ngFor="let Language of Languages"
+      (click)="ChangeLanguage(Language.languageCode, Language.imagePath)">
+      <span>{{GetTranslatedTxt(Language.textId)}}</span>
+      <em><img src="{{Language.imageSource+Language.imagePath}}" alt="{{Language.languageCode}}" /></em>
+    </button>
+  </mat-menu>
+</nav>

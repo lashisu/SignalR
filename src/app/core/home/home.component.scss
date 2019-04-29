@@ -1,0 +1,129 @@
+.FeedList{
+    overflow: hidden;
+    text-align: center;
+    .ActionBox{
+        padding: 0px !important;
+        margin: 0;
+    }
+
+    .TimeTicker{
+        text-align: center;
+        font-size: 16px;
+        color: #f00;
+        font-weight: 500;
+        height: 19px;
+    }
+
+    .price{
+        padding: 8px 0 0 0;
+        text-align: center;
+        font-size: 15px;
+        color : rgba(0,0,0,57);
+        font-weight: 500;
+        line-height: 22px;
+        i{
+            width: 22px;
+            height: 22px;
+            background-color: #1ab7ea;
+            color: #fff;
+            border-radius: 100%;
+            line-height: 22px;
+            font-size: 10px;
+            vertical-align: top;
+            margin-right: 5px;
+        }
+    }
+}
+
+.mat-card-image{
+    margin: 0 !important;
+    width: 100%;
+    height: 205.13px;
+}
+
+.feed-card{
+    display: inline-block;
+    vertical-align: top;
+    width: 172px;
+    background-color: #fff;
+    box-sizing: border-box;
+    transition: all 1s ease-in-out;
+    box-shadow: none !important;
+    cursor: pointer;
+    margin:8px;
+    border: 1px solid;
+    padding:8px;
+    border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+    border-radius: 3px;
+    @media (max-width: 392px) {
+        width: calc(50% - 16px);
+    }
+}
+
+.timeline-item {
+    height: 290px;
+}
+
+@keyframes placeHolderShimmer {
+  0%{ background-position: -468px 0; }
+  100%{ background-position: 468px 0; }
+}
+
+.animated-background {
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-name: placeHolderShimmer;
+  background: #ced4da;
+  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+  background-size: 800px 104px;
+  height: 258.41px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.background-masker {
+  background: #fff;
+  position: absolute;
+}
+
+.img{
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 205.13px;
+    background: url('/assets/img_placeholder.png') 50% 50% no-repeat;
+    background-size: 50px;
+}
+
+.img_gap{
+    top: 205.13px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    &:after{
+        content: "";
+        position: absolute;
+        top: 13px;
+        left: 55px;
+        right: 55px;
+        height: 0;
+        border-top: rgba(0,0,0,.2) 5px dashed;
+    }
+}
+.time_gap{
+    top: 232.13px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    &:after{
+        content: "";
+        position: absolute;
+        top: 13px;
+        left: 55px;
+        right: 55px;
+        height: 0;
+        border-top: rgba(0,0,0,.2) 5px dashed;
+    }
+}

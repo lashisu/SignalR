@@ -1,0 +1,110 @@
+.OrderSummary{
+    h3{
+        margin:0;
+        padding: 10px;
+        font-size: 20px;
+        font-weight: normal;
+    }
+    .DoubleCols{
+        overflow:hidden;
+        padding: 10px;
+        font-weight: 500;
+        font-size: 16px;
+        .text{
+            float: left;
+            color: rgba(0, 0, 0, 0.47);
+        }
+        .amount{
+            float: right;
+            color: #027CA5;
+        }
+        &.Total{
+            .text{
+                color :#4caf50;
+                font-size: 20px;
+            }
+            .amount{
+                font-size: 20px;
+            }
+        }
+        & + .DoubleCols{
+            border-top:rgba(0, 0, 0, 0.08) 1px solid;
+        }
+    }
+    .ActionBtn{
+        padding:10px;
+        button{
+            display: inline-block;
+            font-size: 16px !important;
+            width:100%;
+
+        }
+    }
+    .DeleveryInfo{
+        margin:0;
+        padding: 0;
+        list-style-type: none;
+        font-size: 12px;
+        color: rgba(0, 0, 0, 0.67);
+    }
+    li{
+        padding: 10px;
+        & + li{
+            border-top:rgba(0, 0, 0, 0.08) 1px solid;
+        }
+    }
+}
+
+// @media screen and (min-width:768px) {
+//     .OrderSummary .ActionBtn button{
+//         width: 100%;
+//     }
+//     .StickyPrice{
+//         display: none;
+//     }
+// }
+
+// @media screen and (max-width:767px) {
+//     .OrderSummaryInner{
+//         display: none;
+//     }
+//     .OrderSummary .ActionBtn{
+//         width: 100%;
+//         position: fixed;
+//         bottom: 0;
+//         background: #FFF;
+//         box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
+//         box-sizing: border-box;
+//         padding: 5px 10px;
+
+//         .StickyPrice{
+//             width: 50%;
+//         }
+//         button{
+//             float: right;
+//             font-size: 13px;
+//             padding: 0 20px;    
+//         }
+
+//         .StickyPrice{
+//             float: left;
+//         }
+//         .DoubleCols{
+//             text-align: left;
+//             padding: 9px 0;
+
+//             .amount{
+//                 float: left;
+//             }
+//             .text{
+//                 margin-right: 10px;
+//             }
+//             .ShowPriceInfo{
+//                 color: #027CA5;
+//                 font-size: 20px;
+//                 padding-left: 10px;
+//                 display: inline-block;
+//             }
+//         }
+//     }
+// }
